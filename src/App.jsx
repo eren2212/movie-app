@@ -2,10 +2,16 @@ import "./App.css";
 
 function App() {
   return (
-    <div>
-      <h1 className="text-3xl font-bold underline text-red-500">
-        ümit iridere
-      </h1>
+    <div className="pattern">
+      <div className="wrapper">
+        <header>
+          <img src="./hero.png" alt="hero" />
+          <h1>
+            Zahmetsizce Keyif Alacağınız{" "}
+            <span className="text-gradient">Filmleri</span> Bulun
+          </h1>
+        </header>
+      </div>
     </div>
   );
 }
