@@ -1,6 +1,10 @@
+import { useState } from "react";
 import "./App.css";
+import Search from "./components/Search";
 
 function App() {
+  const [search, setSearch] = useState("I am batman");
+
   return (
     <div className="pattern">
       <div className="wrapper">
@@ -10,6 +14,7 @@ function App() {
             Zahmetsizce Keyif Alacağınız{" "}
             <span className="text-gradient">Filmleri</span> Bulun
           </h1>
+          <Search searchTerm={search} setSearchTerm={setSearch} />
         </header>
       </div>
     </div>
