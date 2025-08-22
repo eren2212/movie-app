@@ -3,7 +3,7 @@ import "./App.css";
 import Search from "./components/Search";
 import MovieDetails from "./components/MovieDetails";
 import Spinner from "./components/Spinner";
-
+import { useDebounce } from "react-use";
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMBD_API_KEY;
 const options = {
@@ -19,7 +19,9 @@ function App() {
   const [errorMessage, setErrorMessage] = useState("");
   const [MovieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
+  const [debounceSearchTerm, setdebounceSearchTerm] = useState("");
 
+  useDebounce(() => setdebounceSearchTerm(search), 500, [search]);
   const fetchMovies = async (query = " ") => {
     setIsLoading(true);
     setErrorMessage("");
@@ -50,8 +52,8 @@ function App() {
   };
 
   useEffect(() => {
-    fetchMovies(search);
-  }, [search]);
+    fetchMovies(debounceSearchTerm);
+  }, [debounceSearchTerm]);
 
   return (
     <div className="pattern">

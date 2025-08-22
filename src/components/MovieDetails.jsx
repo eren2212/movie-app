@@ -9,11 +9,9 @@ const MovieDetails = ({ movieDetay }) => {
     <div className="movie-card">
       <img
         src={
-          poster_path ? (
-            `https://image.tmdb.org/t/p/w500/${poster_path}`
-          ) : (
-            <MdImageNotSupported />
-          )
+          poster_path
+            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
+            : `https://upload.wikimedia.org/wikipedia/commons/a/a3/Image-not-found.png?20210521171500`
         }
         alt=""
       />
