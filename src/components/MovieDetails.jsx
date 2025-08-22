@@ -1,5 +1,6 @@
 import React from "react";
 import { GoStarFill } from "react-icons/go";
+import { TbPointFilled } from "react-icons/tb";
 
 const MovieDetails = ({ movieDetay }) => {
   const { title, poster_path, release_date, vote_average, original_language } =
@@ -23,8 +24,8 @@ const MovieDetails = ({ movieDetay }) => {
         <div className="flex h-11">
           <p className="text-white mr-1.5"> {title}</p>
         </div>
-        <div className="block">
-          <p className=" mt-1 text-blue-300">{release_date}</p>
+        <div className="flex items-center justify-start">
+          <p className=" mt-1 text-gray-300">{release_date.split("-")[0]}</p>
         </div>
       </div>
     </div>
