@@ -1,6 +1,6 @@
 import React from "react";
 import { GoStarFill } from "react-icons/go";
-import { TbPointFilled } from "react-icons/tb";
+import { MdImageNotSupported } from "react-icons/md";
 
 const MovieDetails = ({ movieDetay }) => {
   const { title, poster_path, release_date, vote_average, original_language } =
@@ -9,9 +9,11 @@ const MovieDetails = ({ movieDetay }) => {
     <div className="movie-card">
       <img
         src={
-          poster_path
-            ? `https://image.tmdb.org/t/p/w500/${poster_path}`
-            : "/no-movie.png"
+          poster_path ? (
+            `https://image.tmdb.org/t/p/w500/${poster_path}`
+          ) : (
+            <MdImageNotSupported />
+          )
         }
         alt=""
       />
