@@ -4,7 +4,8 @@ import Search from "./components/Search";
 import MovieDetails from "./components/MovieDetails";
 import Spinner from "./components/Spinner";
 import { useDebounce } from "react-use";
-import { updateSearchCount } from "./appwrite";
+import { updateSearchCount, trendingMovie } from "./appwrite";
+import TrendMovie from "./components/TrendMovie";
 
 const API_BASE_URL = "https://api.themoviedb.org/3";
 const API_KEY = import.meta.env.VITE_TMBD_API_KEY;
@@ -22,6 +23,7 @@ function App() {
   const [MovieList, setMovieList] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [debounceSearchTerm, setdebounceSearchTerm] = useState("");
+  const [trendMovie, settrendMovie] = useState([]);
 
   useDebounce(() => setdebounceSearchTerm(search), 500, [search]);
   const fetchMovies = async (query = " ") => {
@@ -57,8 +59,14 @@ function App() {
     }
   };
 
+  const fetchTrendMovies = async () => {
+    const movies = await trendingMovie();
+    settrendMovie(movies || []);
+  };
+
   useEffect(() => {
     fetchMovies(debounceSearchTerm);
+    fetchTrendMovies();
   }, [debounceSearchTerm]);
 
   return (
@@ -73,6 +81,11 @@ function App() {
           <Search searchTerm={search} setSearchTerm={setSearch} />
         </header>
 
+        <section className="flex flex-col gap-10 justify-center items-center mt-10 sm:flex-row ">
+          {trendMovie.map((movie, index) => {
+            return <TrendMovie movies={movie} key={movie.$id} index={index} />;
+          })}
+        </section>
         <section className="all-movies mt-10">
           <h2 className="text-left">Bütüm Filmler</h2>
 
