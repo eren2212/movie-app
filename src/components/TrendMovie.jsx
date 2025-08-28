@@ -6,6 +6,7 @@ const TrendMovie = ({ movies, index }) => {
       <h1 className="text-gray-100 ">{index + 1}</h1>
       <div className="h-40 w-30 flex flex-col justify-center items-center">
         <img
+          className="rounded-lg bg-cover "
           src={
             movies.poster_path
               ? `https://image.tmdb.org/t/p/w500/${movies.poster_path}`

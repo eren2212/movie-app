@@ -80,8 +80,8 @@ function App() {
           </h1>
           <Search searchTerm={search} setSearchTerm={setSearch} />
         </header>
-
-        <section className="flex flex-col gap-10 justify-center items-center mt-10 sm:flex-row ">
+        <h1 className="mt-10">Trend Filmler </h1>
+        <section className="grid grid-cols-1 gap-15 xs:gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 mt-10">
           {trendMovie.map((movie, index) => {
             return <TrendMovie movies={movie} key={movie.$id} index={index} />;
           })}
